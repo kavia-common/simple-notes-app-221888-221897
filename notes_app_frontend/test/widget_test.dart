@@ -3,16 +3,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:notes_app_frontend/main.dart';
 
 void main() {
-  testWidgets('App generation message displayed', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Initial empty state and FAB present', (WidgetTester tester) async {
+    await tester.pumpWidget(const NotesApp());
+    await tester.pumpAndSettle();
 
-    expect(find.text('notes_app_frontend App is being generated...'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
+    // AppBar title
+    expect(find.text('Notes'), findsOneWidget);
 
-  testWidgets('App bar has correct title', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    // Empty state text
+    expect(find.text('No notes yet'), findsOneWidget);
+    expect(find.text('Tap + to create your first note.'), findsOneWidget);
 
-    expect(find.text('notes_app_frontend'), findsOneWidget);
+    // FAB present
+    expect(find.byType(FloatingActionButton), findsOneWidget);
   });
 }
