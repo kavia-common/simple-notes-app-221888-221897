@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /home/kavia/workspace/code-generation/simple-notes-app-221888-221897/notes_app_frontend
+flutter analyze
+
